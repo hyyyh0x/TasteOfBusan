@@ -1,5 +1,7 @@
 # TasteOfBusan
 
+Shows some of the Busan restaurants with description, rating, cuisine type, name and image with google map embeded. You can search by restaurant names, or filter the restaurant by cuisine types. In cuisine types, there are Korean, Japaneses, Vietnamese, American, Chinese. If you click the restaurant cards, it leads you to a different page called detail page. It shows you detailed information including google map and detailed description. At the bottom of each pages, the footer, it has my email address and the github link that leads you directly to this github page.
+
 ## restraunt references
 1. 거북이 동네(turtle town)
 https://www.google.com/maps/place/%EA%B1%B0%EB%B6%81%EC%9D%B4%EB%8F%99%EB%84%A4+%EB%B6%80%EC%82%B0%EC%9E%A5%EC%A0%84%EC%A0%90/data=!4m10!1m2!2m1!1z6rGw67aB7J2064-Z64Sk!3m6!1s0x3568932076b83d9d:0x2fb534a06ebdbaba!8m2!3d35.2282065!4d129.0866191!15sCg_qsbDrtoHsnbTrj5nrhKRaEiIQ6rGw67aB7J20IOuPmeuEpJIBD21lYXRfcmVzdGF1cmFudKoBSAoNL2cvMTF2eThtcDM1bhABMh8QASIbqpnrbYu5H6_K26gbBjtZsws-JB8RNLqbGQwIMhQQAiIQ6rGw67aB7J20IOuPmeuEpOABAA!16s%2Fg%2F11k71mf89b?entry=ttu&g_ep=EgoyMDI1MDUxMS4wIKXMDSoASAFQAw%3D%3D
