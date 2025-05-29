@@ -2,6 +2,67 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
+  .rating-number {
+  font-size: 0.95rem;
+  color: #666;
+  margin-left: 0.3rem;
+}
+
+  .tab-box {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 1rem 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  font-weight: bold;
+  color: #555;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab.active {
+  border-bottom-color: #d4551f;
+  color: #d4551f;
+}
+
+.tab-content {
+  display: none;
+  padding: 1.5rem 0;
+  color: #333;
+  line-height: 1.6;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-content.active {
+  display: block;
+}
+.back-wrapper {
+  background-color: white;
+  padding: 1rem 2rem 0.5rem;
+}
+
+.back-arrow {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+.back-arrow:hover {
+  color: #d4551f;
+}
   .main-header {
     background-color: #0e0e0e;
     color: white;
@@ -173,20 +234,22 @@ body {
     padding-top: 0;
   }
   .map-placeholder {
-    width: 100%;
-    height: 300px;
-    background: #ccc;
-    border-radius: 8px;
-    margin-bottom: 2rem;
-  }
-  .map-placeholder.small {
-    height: auto;
-    max-width: 500px;
-    margin: 0 auto 2rem auto;
-    overflow: hidden;
-    background: none;
-    display: block;
-  }
+  width: 100%;
+  height: 300px;
+  background: #ccc;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+.map-placeholder.small {
+  height: auto;
+  max-width: 400px;
+  margin: 1rem auto 2rem auto;
+  overflow: hidden;
+  background: none;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
   .stars {
     color: #f90;
   }
