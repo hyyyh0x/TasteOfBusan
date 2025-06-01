@@ -311,6 +311,73 @@ body {
     line-height: 1;
     padding: 0;
   }
+  .heart-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: red;
+  fill: none;
+  transition: fill 0.2s ease;
+}
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  font-weight: bold;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+.heart-btn.filled svg {
+  fill: red;
+}
+#recentlyContainer {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 10px;
+  padding-bottom: 10px;
+  scroll-behavior: smooth;
+}
+.recent-card {
+  flex: 0 0 auto;
+  width: 180px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.recent-card:hover {
+  transform: translateY(-5px);
+}
+.recent-card .image-area {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+
+.recent-card .image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.recent-card .card-body {
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.recent-card .stars,
+.recent-card .name,
+.recent-card .type {
+  margin-bottom: 6px;
+}
   @media (max-width: 768px) {
     .restaurant-detail .detail-container {
       flex-direction: column;

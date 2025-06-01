@@ -232,27 +232,70 @@ const data = [
   }
   
   function renderCards(items) {
-    container.innerHTML = "";
-    items.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <div class="image-area">
-            <img src="${item.image}" alt="${item.name}" class="restaurant-image" />
-        </div>
-        <div class="card-body">
-          <div class="stars">${getStars(item.rating)}</div>
-          <div class="name">${item.name}</div>
-          <div class="type">${item.type}</div>
-        </div>
-      `;
-      card.addEventListener("click", () => {
-        localStorage.setItem("selectedRestaurant", JSON.stringify(item));
-        window.location.href = "detail.html";
-      });
-      container.appendChild(card);
+  container.innerHTML = "";
+  items.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "card";
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    const isFavorite = favorites.some(fav => fav.name === item.name);
+
+    card.innerHTML = `
+      <div class="image-area" style="position: relative;">
+        <img src="${item.image}" alt="${item.name}" class="restaurant-image" />
+        <button class="heart-btn ${isFavorite ? 'filled' : ''}" data-name="${item.name}" style="
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: none;
+          border: none;
+          cursor: pointer;
+        ">
+          <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                     2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09
+                     C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5
+                     c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+          </svg>
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="stars">${getStars(item.rating)}</div>
+        <div class="name">${item.name}</div>
+        <div class="type">${item.type}</div>
+      </div>
+    `;
+
+    card.querySelector(".heart-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      const updatedFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+      const index = updatedFavorites.findIndex(fav => fav.name === item.name);
+      const heartBtn = e.currentTarget;
+
+      if (index >= 0) {
+        updatedFavorites.splice(index, 1);
+        heartBtn.classList.remove("filled");
+      } else {
+        updatedFavorites.push(item);
+        heartBtn.classList.add("filled");
+      }
+
+      localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
     });
-  }
+
+    card.addEventListener("click", (e) => {
+      if (e.target.closest(".heart-btn")) return; // 하트 누른 경우엔 무시
+      const viewed = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
+  viewed.push(item);
+  localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
+  localStorage.setItem("selectedRestaurant", JSON.stringify(item));
+      localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
+
+      window.location.href = "detail.html";
+    });
+
+    container.appendChild(card);
+  });
+}
   
   function toggleFilterPopup() {
     document.getElementById("filterPopup").classList.toggle("show");
@@ -291,6 +334,31 @@ const data = [
     const filtered = currentFiltered.filter(item => item.name.toLowerCase().includes(keyword));
     renderCards(filtered);
   }
+
+  function renderRecentlyViewed() {
+  const recentContainer = document.getElementById("recentlyContainer");
+  const recentItems = JSON.parse(localStorage.getItem("recentlyViewed") || "[]");
+  recentContainer.innerHTML = "";
+
+  recentItems.slice(-3).reverse().forEach(item => {
+    const div = document.createElement("div");
+    div.className = "recent-card";
+    div.innerHTML = `
+      <div class="image-area"><img src="${item.image}" alt="${item.name}" /></div>
+      <div class="card-body">
+        <div class="stars">${getStars(item.rating)}</div>
+        <div class="name">${item.name}</div>
+        <div class="type">${item.type}</div>
+      </div>
+    `;
+    div.addEventListener("click", () => {
+      localStorage.setItem("selectedRestaurant", JSON.stringify(item));
+      window.location.href = "detail.html";
+    });
+    recentContainer.appendChild(div);
+  });
+}
+renderRecentlyViewed();
   
   renderCards(data);
   searchInput.addEventListener("input", applySearchFilter);
