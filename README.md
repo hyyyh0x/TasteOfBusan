@@ -2,6 +2,8 @@
 
 Shows some of the Busan restaurants with description, rating, cuisine type, name and image with google map embeded. You can search by restaurant names, or filter the restaurant by cuisine types. In cuisine types, there are Korean, Japaneses, Vietnamese, American, Chinese. If you click the restaurant cards, it leads you to a different page called detail page. It shows you detailed information including google map and detailed description. At the bottom of each pages, the footer, it has my email address and the github link that leads you directly to this github page.
 
+https://tasteofbusan.netlify.app/
+
 ## restraunt references
 The name and the address is correct, but for the reviews, description, menus are not real. I have randomly added those information.
 
